@@ -110,9 +110,46 @@ These functions will act similarly to each specific chosen index.
 
 ```data_mean['Average'] = ECE_BOARD_EXAM_2[['Math', 'Electronics', 'GEAS', 'Communication']].mean(axis=1)``` This will select four subject grade columns and calculates the row-wise average across those four subjects using ```.mean(axis=1)```. This will be stored within a specific dataframe which will be named either Track_mean, Gender_mean, and Hometown_mean. 
 
-```data_mean = data_mean.pivot_table(index = ['data'], values = 'Average').reset_index()``` calculates the overall mean of the average column grouped by each category. ```.reset_index``` transforms the grouped index back into a regular dataframe columns for the table display and visualization.
+```data_mean = data_mean.pivot_table(index = ['data'], values = 'Average').reset_index()``` calculates the overall mean of the average column grouped by each category. ```.reset_index``` transforms the grouped index back into a regular dataframe columns for a chart visualization.
+
+```display(data_mean)``` will display all the specific category mean, mainly Track, Gender, and Hometown.
+
+```python
+fig, axes = plt.subplots(1, 3, figsize=(18,5))
+
+axes[0].bar(Track_mean['Track'], Track_mean['Average'])
+axes[0].set(title = 'Mean Average by Track')
+axes[0].set(xlabel = 'Track')
+axes[0].set(ylabel = 'Mean Average')
+axes[0].set(ylim = (0, 70))
+
+axes[1].bar(Gender_mean['Gender'], Gender_mean['Average'])
+axes[1].set(title = 'Mean Average by Gender')
+axes[1].set(xlabel = 'Gender')
+axes[1].set(ylabel = 'Mean Average')
+axes[1].set(ylim = (0, 70))
+
+axes[2].bar(Hometown_mean['Hometown'], Hometown_mean['Average'])
+axes[2].set(title = 'Mean Average by Hometown')
+axes[2].set(xlabel = 'Hometown')
+axes[2].set(ylabel = 'Mean Average')
+axes[2].set(ylim = (0, 70))
+```
+These sets of function will work similarly and will display three types of charts.
+
+```plt.subplots(1, 3 figsize=(18,5))``` initializes a single horizontal figure window containing 3 subplots arranged side-by-side with a width of 18 inches and a height of 5 inches.
+
+```axes[0]``` will be th first chart which is equivalent to the Track_mean.
+
+```axes[1]``` will be the second chart which is equivalent to the Gender_mean
+
+```axes[2]``` will be the third chart which is equivalent to the Hometown_mean
+
+```.bar(dataframe_mean['dataframe'], dataframe_mean['Average'])``` will display the average in a bar graph with their values at the left side y-axis.
+
+```.set(title = 'Mean Average by dataframe')``` will display its title. Together with ```.set(xlabel = 'dataframe')``` will display the values of the x axis based on the specific category. ```.set(ylabel = 'Average')``` will display the word "Average" with respect to the y-axis.
 
 ## HISTORY OF README FILE
-* September 6, 2026: Creation of the repository and readme file. Creating a rough draft for all of the discussion and functions used for all three problems
+* September 17, 2026: Creation of the repository and readme file. Creating an in depth discussion from problems 1 - 3
 
 ### Thank you and Godbless!
